@@ -11,7 +11,17 @@ import javafx.scene.Node;
 
 class ObjectControlFactory {
 	
-	public static Node create(Object data, NodePosition position, ObjectAnalyzerInterface objectAnalyzer)
+	public static Node create(Object data, NodePosition position, ObjectAnalyzerInterface objectAnalyzer, boolean modeDefault)
+	{
+		Node innerNode = createInnerNode(data, position, objectAnalyzer);
+		if(innerNode == null)
+		{
+			return null;
+		}
+		return new ObjectControlContainer(innerNode, position, objectAnalyzer, modeDefault);
+	}
+	
+	protected static Node createInnerNode(Object data, NodePosition position, ObjectAnalyzerInterface objectAnalyzer)
 	{
 		if
 		(

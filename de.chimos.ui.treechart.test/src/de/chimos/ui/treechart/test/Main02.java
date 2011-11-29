@@ -27,6 +27,7 @@ public class Main02 extends Application
         objectAnalyzerControl.yAxisSpacingProperty().set(65.0);
         
         objectAnalyzerControl.setData(createData());
+        objectAnalyzerControl.displayAll(true);
         
         ScrollPane root = new ScrollPane();
         root.setContent(objectAnalyzerControl);

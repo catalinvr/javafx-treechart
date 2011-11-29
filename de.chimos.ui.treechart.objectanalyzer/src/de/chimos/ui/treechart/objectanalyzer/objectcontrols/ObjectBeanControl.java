@@ -52,7 +52,7 @@ public class ObjectBeanControl extends TableView<PropertyWrapper<Object>>
 		getColumns().add(typeColumn);
 		
 		setItems(FXCollections.observableArrayList(BeanUtil.getProperties(data)));
-		
+
 		setPrefSize(600, 200);
 		
 		setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -63,7 +63,7 @@ public class ObjectBeanControl extends TableView<PropertyWrapper<Object>>
 					PropertyWrapper<Object> property = getSelectionModel().getSelectedItem();
 					if(property.getValue() != null)
 					{
-						objectAnalyzer.display(position.getChild(childCount++), property.getValue());
+						objectAnalyzer.display(position.getChild(childCount++), property.getValue(), true);
 					}
 				}
 			}

@@ -1,8 +1,14 @@
 package de.chimos.ui.treechart.objectanalyzer;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import de.chimos.property.annotation.PropertyHint;
+import de.chimos.property.util.BeanUtil;
+import de.chimos.property.util.PropertyWrapper;
 import de.chimos.ui.treechart.layout.NodePosition;
 import de.chimos.ui.treechart.layout.TreePane;
 import javafx.beans.property.BooleanProperty;
@@ -36,9 +42,9 @@ public class ObjectAnalyzerSkin implements Skin<ObjectAnalyzerControl>, ObjectAn
 				{
 					clear(NodePosition.ROOT);
 					
-					if(newValue != null)
+					if(getData() != null)
 					{
-						display(NodePosition.ROOT, newValue);
+						display(NodePosition.ROOT, getData(), true);
 					}
 				}
 			}
@@ -64,8 +70,8 @@ public class ObjectAnalyzerSkin implements Skin<ObjectAnalyzerControl>, ObjectAn
 	}
 	
 	@Override
-	public boolean display(NodePosition position, Object data) {
-		Node node = ObjectControlFactory.create(data, position, this);
+	public boolean display(NodePosition position, Object data, boolean modeDefault) {
+		Node node = ObjectControlFactory.create(data, position, this, modeDefault);
 		if(node != null)
 		{
 			_treePane.addChild(node, position);
@@ -81,9 +87,9 @@ public class ObjectAnalyzerSkin implements Skin<ObjectAnalyzerControl>, ObjectAn
 		
 		if(childNodes != null)
 		{
-			for(Node childNode : childNodes)
+			for(Object childNode : childNodes.toArray())
 			{
-				clear(_treePane.getPosition(childNode));
+				clear(_treePane.getPosition((Node)childNode));
 			}
 		}
 		
@@ -92,6 +98,68 @@ public class ObjectAnalyzerSkin implements Skin<ObjectAnalyzerControl>, ObjectAn
 		if(node != null)
 		{
 			_treePane.removeChild(node);
+		}
+	}
+
+	
+	public void displayAll(boolean modeDefault)
+	{
+		class OpenTask
+		{
+			public final Object data;
+			public final NodePosition position;
+			public OpenTask(Object data, NodePosition position) { this.data = data; this.position = position; }
+		}
+		
+		clear(NodePosition.ROOT);
+		
+		if(getData() != null)
+		{
+			Set<Object> openedData = new HashSet<Object>();
+			
+			List<OpenTask> openTasks = new ArrayList<>();
+			openTasks.add(new OpenTask(getData(), NodePosition.ROOT));
+			
+			while(openTasks.size() > 0)
+			{
+				OpenTask currentTask = openTasks.get(0);
+				openTasks.remove(0);
+				
+				if(openedData.contains(currentTask.data) == true)
+				{
+					continue;
+				}
+				
+				if(display(currentTask.position, currentTask.data, modeDefault) == false)
+				{
+					continue;
+				}
+				
+				if(currentTask.data.getClass().isArray())
+				{
+					int childCounter = 0;
+					for(Object d : (Object[])currentTask.data)
+					{
+						openTasks.add(new OpenTask(d, currentTask.position.getChild(childCounter++)));
+					}
+				}
+				else if(currentTask.data instanceof Collection<?>)
+				{
+					int childCounter = 0;
+					for(Object d : (Collection<?>)currentTask.data)
+					{
+						openTasks.add(new OpenTask(d, currentTask.position.getChild(childCounter++)));
+					}
+				}
+				else
+				{
+					int childCounter = 0;
+					for(PropertyWrapper<Object> property : BeanUtil.getProperties(currentTask.data))
+					{
+						openTasks.add(new OpenTask(property.getValue(), currentTask.position.getChild(childCounter++)));
+					}
+				}
+			}
 		}
 	}
 

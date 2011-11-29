@@ -39,12 +39,16 @@ public class ObjectAnalyzerControl extends Control implements ObjectAnalyzerInte
 	}
 
 	@Override
-	public boolean display(NodePosition position, Object data) {
-		return getMySkin().display(position, data);
+	public boolean display(NodePosition position, Object data, boolean modeDefault) {
+		return getMySkin().display(position, data, modeDefault);
 	}
 
 	@Override
 	public void clear(NodePosition position) {
 		getMySkin().clear(position);
+	}
+	
+	public void displayAll(boolean modeDefault) {
+		getMySkin().displayAll(modeDefault);
 	}
 }

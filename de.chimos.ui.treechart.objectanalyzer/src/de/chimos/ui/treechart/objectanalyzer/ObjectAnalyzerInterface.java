@@ -16,6 +16,8 @@ public interface ObjectAnalyzerInterface
 	public DoubleProperty lineSpacingProperty();
 	public BooleanProperty showLinesProperty();
 	
-	boolean display(NodePosition position, Object data);
+	boolean display(NodePosition position, Object data, boolean modeDefault);
 	void clear(NodePosition position);
+	
+	void displayAll(boolean modeDefault);
 }

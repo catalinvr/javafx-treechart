@@ -55,7 +55,7 @@ public class ObjectCollectionControl extends TableView<Object>
 					Object entryData = getSelectionModel().getSelectedItem();
 					if(entryData != null)
 					{
-						objectAnalyzer.display(position.getChild(childCount++), entryData);
+						objectAnalyzer.display(position.getChild(childCount++), entryData, true);
 					}
 				}
 			}

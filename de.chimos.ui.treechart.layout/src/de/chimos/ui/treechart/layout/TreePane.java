@@ -107,7 +107,7 @@ public class TreePane extends Region {
     	// See Parent.layoutChildren()
         super.layoutChildren();
         
-        if(_nodeByLevel.isEmpty())
+        if(_nodeByPosition.isEmpty())
         {
         	adjustLineCount(0);
         	
