@@ -100,9 +100,9 @@ public class TreePane extends Region {
     @Override
     protected void layoutChildren()
     {
-    	long timestampBegin = System.currentTimeMillis();
+    	//long timestampBegin = System.currentTimeMillis();
     	
-    	System.out.println("TreePane.layoutChildren(): begin");
+    	//System.out.println("TreePane.layoutChildren(): begin");
     	
     	// See Parent.layoutChildren()
         super.layoutChildren();
@@ -114,7 +114,7 @@ public class TreePane extends Region {
         	setPrefWidth(0);
         	setPrefHeight(0);
         	
-        	System.out.println("TreePane.layoutChildren(): done - empty; "+(System.currentTimeMillis()-timestampBegin)+" millis");
+        	//System.out.println("TreePane.layoutChildren(): done - empty; "+(System.currentTimeMillis()-timestampBegin)+" millis");
         	return;
         }
         
@@ -352,7 +352,7 @@ public class TreePane extends Region {
     	setPrefWidth(widthByPosition.get(NodePosition.ROOT));
     	setPrefHeight(totalHeight);
     	
-    	System.out.println("TreePane.layoutChildren(): done; "+(System.currentTimeMillis()-timestampBegin)+" millis");
+    	//System.out.println("TreePane.layoutChildren(): done; "+(System.currentTimeMillis()-timestampBegin)+" millis");
     }
 	
 	private List<Line> _lines = new ArrayList<>();
