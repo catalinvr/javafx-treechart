@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>de.chimos.ui.treechart.test</name>
+	<name>de.chimos.ui.treechart.objectanalyzer</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -17,11 +17,10 @@
 		</buildCommand>
 		<buildCommand>
 			<name>org.eclipse.ui.externaltools.ExternalToolBuilder</name>
-			<triggers>full,incremental,auto,clean</triggers>
 			<arguments>
 				<dictionary>
 					<key>LaunchConfigHandle</key>
-					<value>&lt;project&gt;/.externalToolBuilders/PropertyBuilder_4.launch</value>
+					<value>&lt;project&gt;/.externalToolBuilders/PropertyBuilder_3.launch</value>
 				</dictionary>
 			</arguments>
 		</buildCommand>

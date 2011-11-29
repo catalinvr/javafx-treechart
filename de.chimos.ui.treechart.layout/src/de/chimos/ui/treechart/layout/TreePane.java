@@ -420,6 +420,50 @@ public class TreePane extends Region {
 	private Map<NodePosition, Node> _nodeByPosition = new HashMap<>();
 	private Map<NodePosition, Set<Node>> _nodeByParentPosition = new HashMap<>();
 	private Map<Integer, Set<Node>> _nodeByLevel = new HashMap<>();
+
+    public NodePosition getPosition(Node node)
+    {
+    	if(node == null)
+    		throw new IllegalArgumentException();
+    	
+    	if(_positionByNode.containsKey(node) == false)
+    		return null;
+    	
+    	return _positionByNode.get(node);
+    }
+    
+    public Node getNode(NodePosition position)
+    {
+    	if(position == null)
+    		throw new IllegalArgumentException();
+    	
+    	if(_nodeByPosition.containsKey(position) == false)
+    		return null;
+    	
+    	return _nodeByPosition.get(position);
+    }
+    
+    public Set<Node> getNodesOfParent(NodePosition position)
+    {
+    	if(position == null)
+    		throw new IllegalArgumentException();
+    	
+    	if(_nodeByParentPosition.containsKey(position) == false)
+    		return null;
+    	
+    	return Collections.unmodifiableSet(_nodeByParentPosition.get(position));
+    }
+    
+    public Set<Node> getNodesOfLevel(Integer level)
+    {
+    	if(level == null)
+    		throw new IllegalArgumentException();
+    	
+    	if(_nodeByLevel.containsKey(level) == false)
+    		return null;
+    	
+    	return Collections.unmodifiableSet(_nodeByLevel.get(level));
+    }
     
     protected void setPosition(Node node, NodePosition position)
     {
@@ -468,17 +512,6 @@ public class TreePane extends Region {
     	_nodeByPosition.remove(position);
     	_nodeByParentPosition.get(position.getParent()).remove(node);
     	_nodeByLevel.get(position.getLevel()).remove(node);
-    }
-    
-    public NodePosition getPosition(Node node)
-    {
-    	if(node == null)
-    		throw new IllegalArgumentException();
-    	
-    	if(_positionByNode.containsKey(node) == false)
-    		return null;
-    	
-    	return _positionByNode.get(node);
     }
     
 }

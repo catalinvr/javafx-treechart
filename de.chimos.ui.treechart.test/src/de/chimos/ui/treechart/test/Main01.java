@@ -39,7 +39,7 @@ import de.chimos.ui.treechart.layout.TreePane;
  *
  * @author Niklas Hofmann, Gerrit Linnemann
  */
-public class Main extends Application {
+public class Main01 extends Application {
 
     /**
      * @param args the command line arguments
@@ -62,7 +62,7 @@ public class Main extends Application {
         root.setContent(treePane);
         
         Scene scene = new Scene(root, 900, 700);
-        scene.getStylesheets().add(getClass().getResource("style.css").toString());
+        scene.getStylesheets().add(getClass().getResource("style01.css").toString());
         
         primaryStage.setTitle("TreeChart Layout Example");
         primaryStage.setScene(scene);

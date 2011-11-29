@@ -3,8 +3,7 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
 	<classpathentry kind="con" path="at.bestsolution.efxclipse.tooling.jdt.core.JAVAFX_CONTAINER"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/de.chimos.ui.treechart.layout"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/de.chimos.property"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/de.chimos.ui.treechart.objectanalyzer"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/de.chimos.ui.treechart.layout"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
