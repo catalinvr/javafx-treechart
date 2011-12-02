@@ -23,8 +23,11 @@ public class ObjectAnalyzerSkin implements Skin<ObjectAnalyzerControl>, ObjectAn
 
 	@PropertyHint public Object data;
 	
+	@Override
 	public ObjectProperty<Object> dataProperty() { return null; }
+	@Override
 	public Object getData() { return this.data; }
+	@Override
 	public void setData(Object data) { this.data = data; }
 	
 	private final ObjectAnalyzerControl _control;
@@ -51,9 +54,13 @@ public class ObjectAnalyzerSkin implements Skin<ObjectAnalyzerControl>, ObjectAn
 		);
 	}
 
+	@Override
 	public DoubleProperty yAxisSpacingProperty() { return _treePane.yAxisSpacingProperty(); }
+	@Override
 	public DoubleProperty xAxisSpacingProperty() { return _treePane.xAxisSpacingProperty(); }
+	@Override
 	public DoubleProperty lineSpacingProperty() { return _treePane.lineSpacingProperty(); }
+	@Override
 	public BooleanProperty showLinesProperty() { return _treePane.showLinesProperty(); }
 	
 	@Override
@@ -102,6 +109,7 @@ public class ObjectAnalyzerSkin implements Skin<ObjectAnalyzerControl>, ObjectAn
 	}
 
 	
+	@Override
 	public void displayAll(boolean modeDefault)
 	{
 		class OpenTask

@@ -73,7 +73,8 @@ public class NodePosition implements Comparable<NodePosition>, Cloneable
         return this._path.size();
     }
     
-    public int compareTo(NodePosition other)
+    @Override
+	public int compareTo(NodePosition other)
     {
     	if(getLevel() < other.getLevel())
     	{

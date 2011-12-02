@@ -18,9 +18,13 @@ public class ObjectAnalyzerControl extends Control implements ObjectAnalyzerInte
 		return (ObjectAnalyzerSkin)getSkin();
 	}
 
+	@Override
 	public DoubleProperty yAxisSpacingProperty() { return getMySkin().yAxisSpacingProperty(); }
+	@Override
 	public DoubleProperty xAxisSpacingProperty() { return getMySkin().xAxisSpacingProperty(); }
+	@Override
 	public DoubleProperty lineSpacingProperty() { return getMySkin().lineSpacingProperty(); }
+	@Override
 	public BooleanProperty showLinesProperty() { return getMySkin().showLinesProperty(); }
 	
 	@Override
@@ -48,6 +52,7 @@ public class ObjectAnalyzerControl extends Control implements ObjectAnalyzerInte
 		getMySkin().clear(position);
 	}
 	
+	@Override
 	public void displayAll(boolean modeDefault) {
 		getMySkin().displayAll(modeDefault);
 	}
